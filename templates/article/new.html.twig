@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un article{% endblock %}
+
+{% block body %}
+
+    <section id="add">
+        <div class="container">
+            <div class="edit-article">
+                <h1 class="title">Créer un article</h1>
+                <div class="edit-action">
+                    {{ include('article/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

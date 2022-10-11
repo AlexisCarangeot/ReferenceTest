@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification de l'article{% endblock %}
+
+{% block body %}
+    <section id="edit">
+        <div class="container">
+            <div class="edit-article">
+                <h1 class="title">Modifier l'article: {{ article.slug }}</h1>
+                {{ include('article/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

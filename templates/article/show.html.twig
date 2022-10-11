@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article {{ article.slug }}{% endblock %}
+
+{% block body %}
+    {% set articleloop = article %}
+    <section id="article">
+        <div class="container">
+            <div class="article">
+                <h1>{{ article.title }}</h1>
+                {% if article.fileName %}
+                    <img class="article-img" src="/images/photo/{{ article.fileName }}" alt="Image de l'article {{ article.slug }}">
+                {% else %}
+                    <div class="article-img">
+                        <p>Aucune image disponible.</p>
+                    </div>
+                {% endif %}
+                <p>{{ article.content }}</p>
+            </div>
+            <div class="suggestions">
+                <h2>Consulter d'autres articles</h2>
+                {% for article in articles|filter((article)=>article!=articleloop) -%}
+                    <a class="link-suggest" href="{{ path('app_article_show', {'slug': article.slug}) }}">
+                        <div class="article-suggest">
+                            <div class="article-suggest-img">
+                                {% if article.fileName %}
+                                    <img src="/images/photo/{{ article.fileName }}" alt="Image de l'article {{ article.slug }}">
+                                {% else %}
+                                    <div class="article-img">
+                                        <p>Aucune image disponible.</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="suggest-info">
+                                <p class="suggest-title">{{ article.title }}</p>
+                                <p class="suggest-content">{{ article.introduction }}</p>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                    <p>Aucun autre article disponible.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

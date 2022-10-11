@@ -1,0 +1,18 @@
+{{ form_start(form) }}
+<div class="form-edit">
+    <div class="hidden-row">
+        {{ form_row(form.title) }}
+        {{ form_row(form.slug) }}
+    </div>
+
+    {{ form_row(form.introduction) }}
+    {{ form_row(form.content) }}
+</div>
+<div class="hidden-row">
+    {{ form_row(form.photoFile) }}
+</div>
+<div class="form-action">
+    <button class="button">{{ button_label|default('Enregistrer') }}</button>
+    <a class="button" href="{{ path('app_article_index') }}">Annuler</a>
+</div>
+{{ form_end(form, {'render_rest': true}) }}
